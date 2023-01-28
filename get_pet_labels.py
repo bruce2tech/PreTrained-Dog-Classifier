@@ -3,8 +3,8 @@
 # */AIPND-revision/intropyproject-classify-pet-images/get_pet_labels.py
 #                                                                             
 # PROGRAMMER: Patrick Bruce
-# DATE CREATED: 01/23/2022                              
-# REVISED DATE: 
+# DATE CREATED: 01/23/2023                              
+# REVISED DATE: 01/28/2023
 # PURPOSE: Create the function get_pet_labels that creates the pet labels from 
 #          the image's filename. This function inputs: 
 #           - The Image Folder as image_dir within get_pet_labels function and 
@@ -45,13 +45,14 @@ def get_pet_labels(image_dir):
     pet_label = []
     # print(pet_image_list)
     for pet in pet_filename:
-        pet_name = ""
-        pet = pet.lower()
-        pet_word_list = pet.split("_")
-        for word in pet_word_list:
-            if word.isalpha():
-                pet_name += word + " "
-        pet_label.append(pet_name.strip())    
+        if not pet.startswith("."):
+            pet_name = ""
+            pet = pet.lower()
+            pet_word_list = pet.split("_")
+            for word in pet_word_list:
+                if word.isalpha():
+                    pet_name += word + " "
+            pet_label.append(pet_name.strip())    
     print(pet_label)
     
     for idx in range(len(pet_filename)):

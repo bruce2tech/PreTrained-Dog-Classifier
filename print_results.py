@@ -73,20 +73,19 @@ def print_results(results_dic, results_stats_dic, model,
     print("\n% Match: {}".format(results_stats_dic["pct_correct_notdogs"]))
     
     if (print_incorrect_dogs == True) and ((results_stats_dic["n_correct_dogs"] + results_stats_dic["n_correct_notdogs"]) != results_stats_dic["n_images"]):
-        
+        print("\n\nIncorrect Classified Dogs List")
         for key in results_dic:
             if sum(results_dic[key][3:]) == 1:
                 incorrect_classified_dogs_list.append([results_dic[key][0], results_dic[key][1]])
-        print("\n\nIncorrect Classified Dogs List")
-        print("\n", incorrect_classified_dogs_list)
+                print("\n", results_dic[key][0] + "    " + results_dic[key][1])
     
     if (print_incorrect_breed == True) and (results_stats_dic["n_correct_dogs"] != results_stats_dic["n_correct_breed"]):
+        print("\n\nIncorrect Classified Breeds List")
         for key in results_dic:     
             if sum(results_dic[key][3:]) == 2 and results_dic[key][2] == 0: 
                 incorrect_classified_breeds_list.append([results_dic[key][0], results_dic[key][1]])
+                print("\n", results_dic[key][0] + "    " + results_dic[key][1])
         
-        print("\n\nIncorrect Classified Breeds List")
-        print("\n", incorrect_classified_breeds_list)
     
     print("\n\nResults Statistics")
     print("\n", results_stats_dic.items())   
