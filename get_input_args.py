@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# */AIPND-revision/intropyproject-classify-pet-images/get_input_args.py
 #                                                                             
 # PROGRAMMER: Patrick Bruce
 # DATE CREATED: 01/22/2023                       
 # REVISED DATE: 01/23/2023
-# PURPOSE: Create a function that retrieves the following 3 command line inputs 
-#          from the user using the Argparse Python module. If the user fails to 
+# PURPOSE: Retrieves the following 3 command line inputs from the user
+#          using the Argparse Python module. If the user fails to
 #          provide some or all of the 3 inputs, then the default values are
 #          used for the missing inputs. Command Line Arguments:
 #     1. Image Folder as --dir with default value 'pet_images'
@@ -17,10 +16,8 @@
 # Imports python modules
 import argparse
 
-# TODO 1: Define get_input_args function below please be certain to replace None
-#       in the return statement with parser.parse_args() parsed argument 
-#       collection that you created with this function
-# 
+# Defines get_input_args function below.
+
 def get_input_args():
     
     """
@@ -41,15 +38,9 @@ def get_input_args():
     """
     # Create Parse using ArgumentParser
     parser = argparse.ArgumentParser()
-    # Create 3 command line arguments as mentioned above using add_argument() from                 # ArguementParser method
+    # Create 3 command line arguments using add_argument() # ArguementParser method
     parser.add_argument("--dir", type = str, default = "pet_images/",  help = "User inputs file directory")    
     parser.add_argument("--arch", type = str, default = "vgg", help = "User specifies which CNN Model Architecture to use")
     parser.add_argument("--dogfile", type = str, default = "dognames.txt")
     args = parser.parse_args()
-    
-    
-    #if args.dir:
-    #    print("directory argument accepted")
-    # Replace None with parser.parse_args() parsed argument collection that 
-    # you created with this function 
     return args
